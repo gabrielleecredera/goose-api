@@ -15,7 +15,7 @@ public class GooseService {
         this.geese = geese;
     }
 
-    private GooseRepository geese;
+    private final GooseRepository geese;
 
     public ArrayList<GooseInfo> list() {
         return this.geese.findAll();
