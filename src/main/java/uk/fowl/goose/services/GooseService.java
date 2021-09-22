@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.fowl.goose.exceptions.GooseTooAggressiveException;
 import uk.fowl.goose.model.GooseInfo;
-import uk.fowl.goose.repository.GooseRepository;
+import uk.fowl.goose.repositories.GooseRepository;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package uk.fowl.goose.repository;
+package uk.fowl.goose.repositories;
 
 import uk.fowl.goose.model.GooseInfo;
 import java.util.ArrayList;
