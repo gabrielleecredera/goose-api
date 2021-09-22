@@ -11,7 +11,10 @@ import java.util.ArrayList;
 @Service
 public class GooseService {
 
-    @Autowired
+    public GooseService(@Autowired GooseRepository geese) {
+        this.geese = geese;
+    }
+
     private GooseRepository geese;
 
     public ArrayList<GooseInfo> list() {
