@@ -1,11 +1,15 @@
 package uk.fowl.goose.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uk.fowl.goose.exceptions.GooseTooAggressiveException;
 import uk.fowl.goose.model.GooseInfo;
 import uk.fowl.goose.services.GooseService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class GooseController {
@@ -19,9 +23,18 @@ public class GooseController {
     }
 
     @PostMapping("/goose")
-    public String goose(@RequestBody GooseInfo goose) {
-        Long id = this.geese.add(goose);
-        return String.format("Goose recorded id %d", id);
+    public ResponseEntity goose(@RequestBody GooseInfo goose) {
+        try {
+
+            Long goose_id = this.geese.add(goose);
+            HashMap<String,Object> response_data = new HashMap<>();
+            response_data.put("status", "Goose Added");
+            response_data.put("id", goose_id);
+            return new ResponseEntity(response_data, HttpStatus.OK);
+
+        } catch(GooseTooAggressiveException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
