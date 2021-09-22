@@ -2,12 +2,14 @@ package uk.fowl.goose;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uk.fowl.goose.repository.GooseRepository;
+
 import java.util.ArrayList;
 
 @RestController
 public class GooseController {
 
-    private GooseRepository geese;
+    private final GooseRepository geese;
 
     @Autowired
     public GooseController(GooseRepository repo) {

@@ -1,10 +1,9 @@
-package uk.fowl.goose.impl;
+package uk.fowl.goose.repository.impl;
 
 import org.springframework.stereotype.Component;
 import uk.fowl.goose.GooseInfo;
-import uk.fowl.goose.GooseRepository;
+import uk.fowl.goose.repository.GooseRepository;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 @Component
