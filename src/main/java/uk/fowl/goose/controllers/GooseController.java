@@ -28,12 +28,16 @@ public class GooseController {
 
             Long goose_id = this.geese.add(goose);
             HashMap<String,Object> response_data = new HashMap<>();
-            response_data.put("status", "Goose Added");
+            response_data.put("message", "Goose Added");
             response_data.put("id", goose_id);
             return new ResponseEntity(response_data, HttpStatus.OK);
 
         } catch(GooseTooAggressiveException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            HashMap<String,Object> response_data = new HashMap<>();
+            response_data.put("message", "Policy Violation");
+            response_data.put("reason", e.getMessage());
+            response_data.put("comment", "What 9000? There's no way that can be right!");
+            return new ResponseEntity(response_data, HttpStatus.BAD_REQUEST);
         }
     }
 
