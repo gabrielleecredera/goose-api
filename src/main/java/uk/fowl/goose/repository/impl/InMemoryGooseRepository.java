@@ -15,17 +15,19 @@ public class InMemoryGooseRepository implements GooseRepository {
         this.gooseList = new ArrayList<GooseInfo>();
     }
 
-    public ArrayList<GooseInfo> getGeese() {
+    public ArrayList<GooseInfo> findAll() {
         return this.gooseList;
     }
 
-    public GooseInfo getGoose(Integer id) {
+    public GooseInfo get(Integer id) {
         return this.gooseList.get(id);
     }
 
-    public Integer addGoose(GooseInfo goose) {
+    public Long add(GooseInfo goose) {
+        Long id = Long.valueOf(gooseList.size());
+        goose.setId(id);
         this.gooseList.add(goose);
-        return gooseList.size() - 1;
+        return id;
     }
 
 }
