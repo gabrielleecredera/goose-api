@@ -1,8 +1,6 @@
 package uk.fowl.goose.repository;
 
-import org.springframework.stereotype.Component;
-import uk.fowl.goose.GooseInfo;
-
+import uk.fowl.goose.model.GooseInfo;
 import java.util.ArrayList;
 
 public interface GooseRepository {

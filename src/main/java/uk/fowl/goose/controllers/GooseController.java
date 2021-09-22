@@ -1,7 +1,8 @@
-package uk.fowl.goose;
+package uk.fowl.goose.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uk.fowl.goose.model.GooseInfo;
 import uk.fowl.goose.repository.GooseRepository;
 
 import java.util.ArrayList;

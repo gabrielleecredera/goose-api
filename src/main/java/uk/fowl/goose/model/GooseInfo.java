@@ -1,4 +1,4 @@
-package uk.fowl.goose;
+package uk.fowl.goose.model;
 
 public class GooseInfo {
 
