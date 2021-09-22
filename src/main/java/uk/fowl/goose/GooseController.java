@@ -14,7 +14,7 @@ public class GooseController {
         this.geese = repo;
     }
 
-    @GetMapping("/")
+    @GetMapping("/geese")
     public @ResponseBody ArrayList<GooseInfo> index() {
         return this.geese.getGeese();
     }
