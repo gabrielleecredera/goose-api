@@ -23,9 +23,5 @@ jobs:
         with:
           name: target
           path: ./target/
-      - run: |
-          echo "ls ../ =$(ls ../)"
-          echo "ls ./target = $(ls ./target)"
-          echo "ls ../target = $(echo "ls ./target)"
-          docker build -t goose .
+      - run: docker build -t goose .
 
