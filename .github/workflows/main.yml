@@ -1,6 +1,8 @@
 name: GitHub Actions Hello World
 on: [push]
 jobs:
+  Checkout:
+    uses: actions/checkout@master
   Hello-World:
     runs-on: ubuntu-latest
     steps:
@@ -9,3 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ./mvnw package
+  
