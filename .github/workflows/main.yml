@@ -2,7 +2,8 @@ name: GitHub Actions Hello World
 on: [push]
 jobs:
   Checkout:
-    uses: actions/checkout@master
+    steps:	
+     - uses: actions/checkout@v2
   Hello-World:
     runs-on: ubuntu-latest
     steps:
