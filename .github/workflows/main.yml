@@ -22,5 +22,10 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: target
-      - run: docker build -t goose .
- 
+          path: ./target/
+      - run: |
+          echo "ls ../ =$(ls ../)"
+          echo "ls ./target = $(ls ./target)"
+          echo "ls ../target = $(echo "ls ./target)"
+          docker build -t goose .
+
