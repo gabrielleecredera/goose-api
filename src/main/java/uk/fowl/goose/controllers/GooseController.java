@@ -36,7 +36,7 @@ public class GooseController {
             HashMap<String,Object> response_data = new HashMap<>();
             response_data.put("message", "Policy Violation");
             response_data.put("reason", e.getMessage());
-            response_data.put("comment", "What 9000? There's no way that can be right!");
+            response_data.put("comment", "What 9000? There's no way that can be right!!!");
             return new ResponseEntity(response_data, HttpStatus.BAD_REQUEST);
         }
     }
