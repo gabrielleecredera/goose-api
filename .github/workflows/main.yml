@@ -5,3 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World"
+  Maven-Package:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./mvnw package
