@@ -24,10 +24,12 @@ jobs:
         with:
           name: target
           path: ./target/
-      - run: docker build -t goose .
+      - run: docker build -t eu.gcr.io/sandpit-james-jeffrey-xtck/goose .
       - name: Login to GCR
         uses: docker/login-action@v1
         with:
           registry: eu.gcr.io
           username: _json_key
           password: ${{ secrets.GCR_JSON_KEY }}
+      - name: push-to-gcr
+        run: docker push eu.gcr.io/sandpit-james-jeffrey-xtck/goose
