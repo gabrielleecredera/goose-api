@@ -35,4 +35,4 @@ jobs:
           username: _json_key
           password: ${{ secrets.GCR_JSON_KEY }}
       - name: push-to-gcr
-        run: docker push eu.gcr.io/sandpit-james-jeffrey-xtck/goose
+        run: docker push eu.gcr.io/sandpit-james-jeffrey-xtck/goose:$GITHUB_SHA
