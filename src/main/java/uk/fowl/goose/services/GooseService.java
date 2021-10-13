@@ -18,7 +18,7 @@ public class GooseService {
     private final GooseRepository geese;
 
     public ArrayList<GooseInfo> list() {
-        return this.geese.findAll();
+        return geese.findAll();
     }
 
     public Long add(GooseInfo goose) throws GooseTooAggressiveException {
@@ -30,6 +30,6 @@ public class GooseService {
                     String.format("Against business H&S policy, aggression %d is over 9000", aggression));
         }
 
-        return this.geese.add(goose);
+        return geese.add(goose);
     }
 }

@@ -9,25 +9,24 @@ import java.util.ArrayList;
 @Component
 public class InMemoryGooseRepository implements GooseRepository {
 
-    private ArrayList<GooseInfo> gooseList;
+    private final ArrayList<GooseInfo> gooseList;
 
     public InMemoryGooseRepository() {
         this.gooseList = new ArrayList<GooseInfo>();
     }
 
     public ArrayList<GooseInfo> findAll() {
-        return this.gooseList;
+        return gooseList;
     }
 
     public GooseInfo get(Integer id) {
-        return this.gooseList.get(id);
+        return gooseList.get(id);
     }
 
     public Long add(GooseInfo goose) {
-        Long id = Long.valueOf(gooseList.size());
+        long id = (long) gooseList.size();
         goose.setId(id);
-        this.gooseList.add(goose);
+        gooseList.add(goose);
         return id;
     }
-
 }

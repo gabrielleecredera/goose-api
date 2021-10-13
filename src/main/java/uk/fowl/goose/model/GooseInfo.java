@@ -2,7 +2,17 @@ package uk.fowl.goose.model;
 
 public class GooseInfo {
 
+    private Long id;
+    private String name;
+    private Integer aggression;
+
     public GooseInfo() {
+    }
+
+    public GooseInfo(Long id, String name, Integer aggression) {
+        this.id = id;
+        this.name = name;
+        this.aggression = aggression;
     }
 
     public String getName() {
@@ -28,9 +38,4 @@ public class GooseInfo {
     public void setId(Long id) {
         this.id = id;
     }
-
-    private Long id = null;
-    private String name = null;
-    private Integer aggression = null;
-
 }
