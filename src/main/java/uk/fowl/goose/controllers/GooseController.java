@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uk.fowl.goose.exceptions.GooseTooAggressiveException;
+import uk.fowl.goose.model.ErrorResponse;
+import uk.fowl.goose.model.GooseCreatedResponse;
 import uk.fowl.goose.model.GooseInfo;
 import uk.fowl.goose.services.GooseService;
 
@@ -14,32 +16,28 @@ import java.util.HashMap;
 @RestController
 public class GooseController {
 
+    private final GooseService geese;
+
     @Autowired
-    private GooseService geese;
+    public GooseController(GooseService geese) {
+        this.geese = geese;
+    }
 
     @GetMapping("/geese")
     public @ResponseBody ArrayList<GooseInfo> index() {
-        return this.geese.list();
+        return geese.list();
     }
 
     @PostMapping("/goose")
-    public ResponseEntity goose(@RequestBody GooseInfo goose) {
-        try {
-
-            Long goose_id = this.geese.add(goose);
-            HashMap<String,Object> response_data = new HashMap<>();
-            response_data.put("message", "Goose Added");
-            response_data.put("id", goose_id);
-            return new ResponseEntity(response_data, HttpStatus.OK);
-
-        } catch(GooseTooAggressiveException e) {
-            HashMap<String,Object> response_data = new HashMap<>();
-            response_data.put("message", "Policy Violation");
-            response_data.put("reason", e.getMessage());
-            response_data.put("comment", "What 9000? There's no way that can be right!!!");
-            return new ResponseEntity(response_data, HttpStatus.BAD_REQUEST);
-        }
+    public GooseCreatedResponse goose(@RequestBody GooseInfo goose) {
+        Long gooseId = geese.add(goose);
+        return new GooseCreatedResponse(gooseId, "Goose added!");
     }
 
+    @ExceptionHandler({ GooseTooAggressiveException.class })
+    public ResponseEntity<ErrorResponse> handleGooseTooAggressiveException(GooseTooAggressiveException exception) {
+        ErrorResponse errorResponse = new ErrorResponse("Policy violation", exception.getMessage(), "What 9000? There's no way that can be right!!!");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }
 
