@@ -21,7 +21,7 @@ public class GooseService {
         return geese.findAll();
     }
 
-    public Long add(GooseInfo goose) throws GooseTooAggressiveException {
+    public Long add(GooseInfo goose) {
 
         // Business rule - no super aggressive geese.
         Integer aggression = goose.getAggression();
