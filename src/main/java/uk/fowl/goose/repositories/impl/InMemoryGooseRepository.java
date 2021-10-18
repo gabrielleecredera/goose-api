@@ -24,7 +24,12 @@ public class InMemoryGooseRepository implements GooseRepository {
     }
 
     public Long add(GooseInfo goose) {
-        long id = (long) gooseList.size();
+        long id;
+        if (gooseList.size() == 0) {
+            id = 0;
+        } else {
+            id = (long) gooseList.get(gooseList.size() - 1).getId() + 1;
+        }
         goose.setId(id);
         gooseList.add(goose);
         return id;
@@ -34,5 +39,14 @@ public class InMemoryGooseRepository implements GooseRepository {
         ArrayList<GooseInfo> finalList = (ArrayList<GooseInfo>) gooseList.clone();
         finalList.removeIf(gooseInfo -> !(gooseInfo.getName().contains(name)));
         return finalList;
+    }
+
+    public GooseInfo delete(Integer id) {
+        for (int i = 0; i < gooseList.size(); i++) {
+            if (gooseList.get(i).getId() == Long.valueOf(id)) {
+                return gooseList.remove(i);
+            }
+        }
+        return null;
     }
 }

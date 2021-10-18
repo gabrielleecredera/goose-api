@@ -14,6 +14,7 @@ import uk.fowl.goose.services.GooseService;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@CrossOrigin()
 @RestController
 public class GooseController {
 
@@ -33,6 +34,10 @@ public class GooseController {
     public @ResponseBody GooseInfo getGoose(@PathVariable int id) {
         return geese.get(id);
     }
+
+    @CrossOrigin()
+    @DeleteMapping("/goose/{id}")
+    public @ResponseBody GooseInfo deleteGoose(@PathVariable int id) { return geese.delete(id); }
 
     @GetMapping("/goose")
     public @ResponseBody ArrayList<GooseInfo> search(@RequestParam(value="name") String name) {

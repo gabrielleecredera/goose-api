@@ -9,5 +9,6 @@ public interface GooseRepository {
     public GooseInfo get(Integer id);
     public Long add(GooseInfo goose);
     public ArrayList<GooseInfo> search(String name);
+    public GooseInfo delete(Integer id);
 
 }

@@ -32,4 +32,9 @@ public class StubGooseRepository implements GooseRepository {
     public ArrayList<GooseInfo> search(String name) {
         return null;
     }
+
+    @Override
+    public GooseInfo delete(Integer id) {
+        return null;
+    }
 }

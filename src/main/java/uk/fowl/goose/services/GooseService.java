@@ -36,6 +36,15 @@ public class GooseService {
         return geese.add(goose);
     }
 
+    public GooseInfo delete(int id) {
+        GooseInfo result = geese.delete(id);
+        if (result != null) {
+            return result;
+        } else {
+            throw new GooseNotFoundException("Goose with id:" + id + " does not exist :(");
+        }
+    }
+
     public GooseInfo get(int id) {
         try {
             return geese.get(id);
