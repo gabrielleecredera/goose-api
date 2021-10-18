@@ -8,5 +8,6 @@ public interface GooseRepository {
     public ArrayList<GooseInfo> findAll();
     public GooseInfo get(Integer id);
     public Long add(GooseInfo goose);
+    public ArrayList<GooseInfo> search(String name);
 
 }

@@ -2,10 +2,13 @@ package uk.fowl.goose.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import uk.fowl.goose.exceptions.GooseNotFoundException;
 import uk.fowl.goose.exceptions.GooseTooAggressiveException;
+import uk.fowl.goose.model.ErrorResponse;
 import uk.fowl.goose.model.GooseInfo;
 import uk.fowl.goose.repositories.GooseRepository;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Service
@@ -31,5 +34,17 @@ public class GooseService {
         }
 
         return geese.add(goose);
+    }
+
+    public GooseInfo get(int id) {
+        try {
+            return geese.get(id);
+        } catch (IndexOutOfBoundsException e) {
+            throw new GooseNotFoundException("Goose with id:" + id + " does not exist :(");
+        }
+    }
+
+    public ArrayList<GooseInfo> search(String name) {
+        return geese.search(name);
     }
 }

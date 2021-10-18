@@ -29,4 +29,10 @@ public class InMemoryGooseRepository implements GooseRepository {
         gooseList.add(goose);
         return id;
     }
+
+    public ArrayList<GooseInfo> search(String name) {
+        ArrayList<GooseInfo> finalList = (ArrayList<GooseInfo>) gooseList.clone();
+        finalList.removeIf(gooseInfo -> !(gooseInfo.getName().contains(name)));
+        return finalList;
+    }
 }
